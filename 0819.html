@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>08/19</title>
+    <style>
+      *{
+        padding:0px;
+        margin:0px;
+      }
+      .header{
+        border-sizing:border-box;
+        text-align:center;
+        font-family: Blippo, fantasy;
+        font-size:20px;
+      }
+      body{
+        margin:0 auto;
+        background-color:pink;
+      }
+      .nav{
+        margin:0 auto;
+      }
+      .nav>img{
+        position:relative;
+        left:70px;
+        width:400px;
+      }
+      .nav>h1{
+        position:relative;
+        left:70px;
+      }
+      .nav>button{
+        position:relative;
+        left:70px;
+        line-height:30px;
+        border-radius:5%;
+        cursor:pointer;
+        transition-duration:0.4s;
+      }
+      .nav>a>button{
+        border-radius:5%;
+        position:relative;
+        top:5px;
+        left:70px;
+        width:290px;
+        line-height:30px;
+      }
+      #buttonmuon{
+        background-color:#6699ff;
+        color:black;
+        transition-duration:0.4s;
+        cursor:pointer;
+      }
+      #buttonmuon:hover {
+        background-color:#cc66ff;
+        color:white;
+      }
+      #buttonkhong{
+        background-color:#6699ff;
+        color:black;
+        transition-duration:0.4s;
+        cursor:pointer;
+      }
+      #buttonkhong:hover{
+        background-color:#cc66ff;
+        color:white;
+      }
+      .buttonvid{
+        background-color:#6699ff;
+        color:black;
+        transition-duration:0.4s;
+        margin-top: 15px;
+      }
+      .buttonvid:hover{
+        background-color:#cc66ff;
+        color:white;
+      }
+
+      .modal{
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: none;
+        align-items: center;
+        background: rgba(0,0,0,0.4);
+        justify-content: center;
+        animation: modalFaceIn ease 0.5s;
+
+      }
+
+      .modal.open{
+        display: flex;
+      }
+      @keyframes modalFaceIn{
+        from {
+          opacity:0;
+          transform: translateY(-100px);
+        }
+        to{
+          opacity:1;
+          transform: translatY(0)
+           }
+      }
+      .buttn{
+        text-align: center;
+        border: 1px solid #000;
+        background-color: cornsilk;
+        padding: 16px;
+      }
+      .buttn a{
+        text-decoration: none;
+        color: #000;
+        font-size: 25px;
+      }
+
+      .buttn:hover{
+        background-color: #ccc;
+        cursor:pointer;
+      }
+
+    </style>
+  </head>
+  <body>
+  <div class="header">
+    <h1 class="heading" style="position:relative;left:80px;">Hello Bae!!</h1>
+    <div class="nav">
+      <img class="img" src="ảnh2 đứa.jpg">
+      <h1> muốn chúc sinh nhật không?</h1>
+      <button id="buttonmuon" onclick='alert("chúc em iu sinh nhật vui vẻ <3")' style="width:150px;">muốn nè<3</button>
+      <button id="buttonkhong" onclick='gamau(this)' style="width:150px;height40px;">không!!</button><br>
+      <button class="buttonvid js-button" >nếu ấn muốn rồi thì xem video nè</button>
+    </div>
+  </div>
+  <div class="modal">
+    <div class="modal-container js-modal-container">
+      <div class="modal-body">
+        <video width="320" height="240" controls >
+          <source src="0819.mp4" type="video/mp4">
+        </video>
+        <div class="buttn">
+          <a href="https://www.youtube.com/watch?v=RaeLAwacDG4&ab_channel=077cicok" class="continue">Còn nữa nè </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </body>
+  
+  <script>
+    function gamau(id){
+      var mau= document.getElementById('buttonmuon');
+      var i = Math.floor(Math.random()*300)+1;
+      var j = Math.floor(Math.random()*100)+mau.offsetTop;
+      id.style.left = i+'px';
+      id.style.top = j+'px';
+    }
+  </script>
+  <script>
+    const buttonVid = document.querySelectorAll('.js-button')
+    const modal = document.querySelector('.modal')
+    const modalContainer = document.querySelector('.js-modal-container')
+
+    function hidebutton() {
+      modal.classList.remove('open')
+    }
+
+    function showbutton() {
+      modal.classList.add('open')
+    }
+
+
+
+    for (const button of buttonVid) {
+      button.addEventListener('click',showbutton)
+    }
+
+    modal.addEventListener('click',hidebutton)
+    modalContainer.addEventListener('click',function (event){
+      event.stopPropagation()
+    })
+  </script>
+</html>
